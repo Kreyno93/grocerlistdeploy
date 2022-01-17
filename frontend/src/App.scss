@@ -1,0 +1,24 @@
+body {
+  background-color: #282c34;
+}
+
+.header{
+  text-align: center;
+  color: white;
+  padding: 1rem;
+  border: 1px solid hotpink
+}
+
+.formButtonWrapper{
+  display:flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.listWrapper{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  border: 1px solid hotpink;
+  color:white;
+}
