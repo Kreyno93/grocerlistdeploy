@@ -1,31 +1,25 @@
 package de.neuefische.backend.service;
 
-import de.neuefische.backend.model.UserMongo;
-import de.neuefische.backend.repository.UserRepository;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
+import de.neuefische.backend.repository.MongoUserRepository;
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 @Service
 public class MongoUserDetailsService implements UserDetailsService {
 
-    private final UserRepository userRepository;
 
-    public MongoUserDetailsService(UserRepository repository) {
+    public static final String AUTHORITY_API_READWRITE ="AUTHORITY_API_READWRITE" ;
+    private final MongoUserRepository userRepository;
+
+    public MongoUserDetailsService(MongoUserRepository repository) {
         this.userRepository = repository;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserMongo user = userRepository.findByUsername(username);
-        if(user == null) {
-            throw new UsernameNotFoundException("User not found");
-        }
-        return new User(user.getUsername(), user.getPassword(),
-                List.of(new SimpleGrantedAuthority("user")));
+        return  userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
 }
