@@ -3,13 +3,13 @@ import {Product} from "../models/Product";
 import {useState} from "react";
 
 
-export default function List({itemList, setItemList}:{itemList:Product[],setItemList:Function}) {
+export default function List() {
+    // {itemList, setItemList}:{itemList:Product[],setItemList:Function}
 
-
-    const removeItem = (key:number) => {
-        const newList = itemList.filter(itemObj => itemObj.key !== key)
-        setItemList(newList)
-    };
+    // const removeItem = (key:number) => {
+    //     const newList = itemList.filter(itemObj => itemObj.key !== key)
+    //     setItemList(newList)
+    // };
 
 
 
@@ -36,16 +36,26 @@ export default function List({itemList, setItemList}:{itemList:Product[],setItem
     //     setItemList(newList)
     //     console.log(newList)
     // }
+
     return (
-        <div>
-            {itemList.map((itemObj) => {
-                return <div key={itemObj.key} className="Item">
-                    <p>{itemObj.name} Anzahl: {itemObj.count}</p>
-                    <button onClick={() => removeItem(itemObj.key)}>Remove</button>
-                    {/*<button onClick={() => increaseCount(itemObj.key)}>+</button>*/}
-                    {/*<button onClick={() => decreaseCount(itemObj.key)}>-</button>*/}
-                </div>
-            })}
+        <div className="List">
+            <h3>Liste von Username</h3>
+            <ul>
+                <li>Produkt Name: </li>
+                <li>Anzahl: </li>
+            </ul>
         </div>
     )
+    // return (
+    //     <div>
+    //         {itemList.map((itemObj) => {
+    //             return <div key={itemObj.key} className="Item">
+    //                 <p>{itemObj.name} Anzahl: {itemObj.count}</p>
+    //                 <button onClick={() => removeItem(itemObj.key)}>Remove</button>
+    //                 {/*<button onClick={() => increaseCount(itemObj.key)}>+</button>*/}
+    //                 {/*<button onClick={() => decreaseCount(itemObj.key)}>-</button>*/}
+    //             </div>
+    //         })}
+    //     </div>
+    // )
 }
