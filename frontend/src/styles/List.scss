@@ -1,3 +1,7 @@
-list {
+.List {
+  border: solid hotpink 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   color: white;
 }
